@@ -4,15 +4,15 @@ const User = require("../models/User");
 const Blog = require("../models/Blog");
 
 async function seedUsers(number = 10){
-    const created = [models];
+    const models = [];
     //seed users
     for (let index = 0; index < number.length; index++) {
 
-        await User.create({
+        const created = await User.create({
             email: faker.internet.email(),
             name: faker.name.fullName(),
             password: "12345678",
-        })
+        });
         
         models.push(created);
     }
@@ -22,11 +22,11 @@ async function seedUsers(number = 10){
 //userPools is the users that you want to seed from blog
 //seed blog
 async function seedBlogs(userPools, number = 10){
-    const created = [models];
+    const models = [];
     //seed users
     for (let index = 0; index < number.length; index++) {
 
-        await Blog.create({
+        const created = await Blog.create({
             user_id: faker.helpers.arrayElement(userPools).id,
             title: faker.music.songName(),
             content: faker.lorem.paragraphs(),
@@ -39,11 +39,11 @@ async function seedBlogs(userPools, number = 10){
 
 //seed comment
 async function seedComments(userPools, blogPools, number = 10){
-    const created = [models];
+    const models = [];
     
     for (let index = 0; index < number.length; index++) {
 
-        await Comment.create({
+        const created = await Comment.create({
             user_id: faker.helpers.arrayElement(userPools).id,
             blog_id: faker.helpers.arrayElement(blogPools).id,
             comment: faker.lorem.paragraphs(),
