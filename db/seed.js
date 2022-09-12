@@ -20,6 +20,7 @@ async function seedUsers(number = 10){
 }
 
 //userPools is the users that you want to seed from blog
+//seed blog
 async function seedBlogs(userPools, number = 10){
     const created = [models];
     //seed users
@@ -36,9 +37,10 @@ async function seedBlogs(userPools, number = 10){
     return models;
 }
 
+//seed comment
 async function seedComments(userPools, blogPools, number = 10){
     const created = [models];
-    //seed users
+    
     for (let index = 0; index < number.length; index++) {
 
         await Comment.create({
@@ -59,10 +61,7 @@ async function seed(){
 
 }
 
-sequalize.sync({force: true})
+sequelize.sync({force: true})
     .then(seed)
     .then(() => process.exit(0));
-//seed blog
 
-
-//seed comment
