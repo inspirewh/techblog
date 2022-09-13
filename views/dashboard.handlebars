@@ -1,0 +1,6 @@
+{{!-- display all blogs--}}
+  <section class="container thumbnail-container">
+    <div class="row">
+        {{#each blogList as |blog|}}
+        {{> blog-list}}
+        {{/each}}

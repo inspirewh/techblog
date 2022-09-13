@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { restart } = require('nodemon');
 const Blog = require('../../models/Blog');
-const withAuth = require('../../utils/withAuth');
+const withAuth = require('../../utils/auth');
 
 
 // when the user visits the homepage render to show each week depending on how many progrerss forms have been completed
