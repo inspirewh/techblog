@@ -1,19 +1,28 @@
 const sequelize = require("../config/connection");
-const { faker } = require("@faker-js/faker");
+const { faker } = require('@faker-js/faker');
 const User = require("../models/User");
 const Blog = require("../models/Blog");
+const Comment = require("../models/Comment");
 
 async function seedUsers(number = 10){
+    
     const models = [];
-    //seed users
-    for (let index = 0; index < number.length; index++) {
+
+    const admin = await User.create({
+        email: 'olivia@test.com',
+        name: 'oliviaTest',
+        password: 'test123456'
+    })
+    models.push(admin);
+    
+    for (let index = 0; index < number; index++) {
 
         const created = await User.create({
             email: faker.internet.email(),
             name: faker.name.fullName(),
-            password: "12345678",
+            password: "1234567891",
         });
-        
+
         models.push(created);
     }
     return models;
@@ -24,7 +33,7 @@ async function seedUsers(number = 10){
 async function seedBlogs(userPools, number = 10){
     const models = [];
     //seed users
-    for (let index = 0; index < number.length; index++) {
+    for (let index = 0; index < number; index++) {
 
         const created = await Blog.create({
             user_id: faker.helpers.arrayElement(userPools).id,
@@ -41,12 +50,12 @@ async function seedBlogs(userPools, number = 10){
 async function seedComments(userPools, blogPools, number = 10){
     const models = [];
     
-    for (let index = 0; index < number.length; index++) {
+    for (let index = 0; index < number; index++) {
 
         const created = await Comment.create({
             user_id: faker.helpers.arrayElement(userPools).id,
             blog_id: faker.helpers.arrayElement(blogPools).id,
-            comment: faker.lorem.paragraphs(),
+            content: faker.lorem.paragraphs(),
         })
         
         models.push(created);

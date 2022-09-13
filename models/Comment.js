@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Blog extends Model {
+class Comment extends Model {
 }
 
 Comment.init(
@@ -14,7 +14,7 @@ Comment.init(
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-    comment: {
+    content: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

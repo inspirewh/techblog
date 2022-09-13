@@ -1,0 +1,64 @@
+  <section>
+    <div class="text-container col-8">
+      <h5 class="welcome-header"> Welcome - Tech Blog </h5>
+      <p class="welcome-text">Welcome on board to the Get Fit In 6 - 6 Week Fitness Challenge! <br>
+      We are so excited to be working with you - and look forward to seeing the incredible results you achieve over the next 6 weeks.
+      Show up every single day, especially on the days you don't feel like it and just bloody do it. Leave all the excuses at the door and you just do it.</p>
+    </div> 
+    </section>
+
+{{!-- display all 10 workouts--}}
+  <section class="container thumbnail-container">
+    <div class="row">
+ {{#each blogs as |blog|}}
+  <div class="card col-12 col-lg-4 col-md-6">
+        <div class="card-body">  
+          <h4 class="card-title"> Week {{blog.title}}</h4>
+          <p class="card-text">
+            {{blog.content}}
+          </p>
+          <a href="/library" class="btn main-Btn btn-primary" role="button">Week {{id}}</a>
+        </div>
+      </div>
+  {{/each}}
+
+          <div class="card col-12 col-lg-4 col-md-6">
+        <div class="card-body">  
+          <h4 class="card-title">Create a Blog Post</h4>
+          <p class="card-text">
+            Keep creating add a new blog post<br>          
+          </p> 
+          <button type="button" class="btn main-Btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Create Blog Post</button>
+        </div>
+      </div>
+  </section>
+
+  <section>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title welcome-header" id="exampleModalLongTitle">It's fitness testing time...</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Before you move onto the next week let's check in on your progress. <br> Set the timer for 60 seconds and complete as many reps of each of the below exercise (with correct technique) and enter the number of reps you complete.</p>
+        </div>
+        <form>
+          <div class="form-group" id="popup-form">
+            <label for="blog-title" class="col-form-label">Blog Title</label>
+            <input type="text" class="form-control form-text" id="blog-title" placeholder="Blog Title">
+          </div>
+          <div class="form-group" id="popup-form">
+            <label for="blog-content" class="col-form-label">Situps</label>
+            <input type="text" class="form-control form-text" id="blog-content" placeholder="Blog Content">
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary popup-btn" id="blogBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
