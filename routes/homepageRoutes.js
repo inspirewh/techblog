@@ -45,7 +45,7 @@ router.get('/signup', (req, res, next) => {
 
 
 //get one blog by ID
-router.get('/blog/:id', async (req, res) => {
+router.get('/blog/:id', withAuth, async (req, res) => {
     try{ 
         const blogData = await Blog.findByPk(req.params.id)
         const blog = blogData.get({ plain: true });
