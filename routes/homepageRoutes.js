@@ -1,37 +1,51 @@
 const router = require('express').Router();
-const Blog = require('../models/Blog');
+const { Blog, User, Comment } = require('../models');
 
 
-// route to get all weeks to main homepage
+// route homepage - get all blogs to homepage
 router.get('/', async (req, res) => {
-    const bloglistData = await Blog.findAll().catch((err) => { 
-        res.json(err);
-      });
-        const blogList = bloglistData.map((blog) => blog.get({ plain: true }));
-        res.render('dashboard', { blogList });
-      });
-  
+    const bloglistData = await Blog.findAll(
+      {include: [{
+        model: User, 
+        attributes: ['username']}
+      ]},
 
-      // route to get all workouts to workout library
-router.get('/dashboard', async (req, res) => {
-    const bloglistData = await Blog.findAll().catch((err) => { 
-        res.json(err);
-      });
-        const blogList = bloglistData.map((blog) => blog.get({ plain: true }));
-        res.render('dashboard', { blogList });
+      ).catch((err) => { 
+       res.json(err);
       });
 
-//get one workout by ID
+      const blogList = bloglistData.map((blog) => blog.get({ plain: true }));
+        res.render('dashboard', { blogList, 
+          loggedIn: req.session.loggedIn, name: req.session.name 
+        });
+      });
+
+
+
+
+      
+//login page > render login page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+  res.redirect('/');
+  return
+  }
+  res.render('login');
+});
+
+//sign up page > render signup > contain authentication routes
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+
+//get one blog by ID
 router.get('/blog/:id', async (req, res) => {
     try{ 
-        const blogData = await Blog.findByPk(req.params.id);
-        if(!blogData) {
-            res.status(404).json({message: 'No blog with this id!'});
-            return;
-        }
+        const blogData = await Blog.findByPk(req.params.id)
         const blog = blogData.get({ plain: true });
         console.log(blog)
-        res.render('dashboard', {blog,
+        res.render('blog-post', {blog,
           loggedIn: req.session.loggedIn,
         });
       } catch (err) {
@@ -39,5 +53,10 @@ router.get('/blog/:id', async (req, res) => {
       };     
   });
 
+// route to create a new post
+router.get('/createblog', (req, res, next) => {
+  res.render('create-blog')
+})
 
-module.exports = router;
+
+module.exports = router

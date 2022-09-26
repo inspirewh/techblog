@@ -1,0 +1,35 @@
+<div class="card mb-4 mt-5">
+  <div class="card-header">
+    Posted by: {{user.username}} at {{format_time blog.createdAt}} on {{format_date blog.createdAt}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <p class="card-text">{{blog.content}}</p>
+  </div>
+
+ <div class="card-text my-2">
+  {{#if blog.comments}}
+  <strong class="mb-2">Comments</strong>
+
+  {{#each commentList as |comment|}}
+  {{> comment-data}}
+  {{/each}}
+
+  {{else}}
+  <p>No comments yet, be the first!</p>
+  {{/if}}
+  </div>
+
+   <div class="card">
+    <h3 class="card-header"></h3>
+    <form class="card-body comment-form" id="comment-form">
+
+        <label class="form-label">Comment</label>
+        <input id="comment-body" name="comment-body" class="form-input" />
+
+        <button type="submit" class="btn" id="commentBtn">Submit</button>
+    </form>
+</div>
+</section>
+
+  <script src="/js/comment.js"></script>
