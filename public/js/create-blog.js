@@ -1,11 +1,11 @@
-async function postHandler(event) {
+async function newBlogHandler(event) {
     event.preventDefault();
     
     const title = document.querySelector('#blog-title').value.trim() 
     const content = document.querySelector('#blog-content').value.trim()
 
     if(title && body) {
-        const res = await fetch('/post/', {
+        const res = await fetch('/blog/', {
             method: 'POST',
             body: JSON.stringify({
                 title,
@@ -22,4 +22,4 @@ async function postHandler(event) {
     }
 }
 
-document.querySelector('#create-blog-form').addEventListener('submit', postHandler);
+document.querySelector('#create-blog-form').addEventListener('submit', newBlogHandler);

@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
       });
 
       const blogList = bloglistData.map((blog) => blog.get({ plain: true }));
-        res.render('dashboard', { blogList, 
+        res.render('homepage', { blogList, 
           loggedIn: req.session.loggedIn, name: req.session.name 
         });
       });

@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 
 //create api route to post add new blog
 // post request to handle blog submission
-router.post('/', withAuth, async(req,res) =>{
+router.post('/blog', withAuth, async(req,res) =>{
   const postBlog = await Blog.create({
     title: req.body.title,
     user_id: req.session.user_id,
