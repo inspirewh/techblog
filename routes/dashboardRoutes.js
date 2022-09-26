@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
 
 // Dashboard page > render dashboard 
-router.get('/dashboard', withAuth, async (req, res, next) => {
+router.get('/dashboard', async (req, res, next) => {
     const bloglistData = await Blog.findAll({
         where: {
             user_id: req.session.user_id

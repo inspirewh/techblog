@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 
 // route homepage - get all blogs to homepage
@@ -27,14 +28,18 @@ router.get('/', async (req, res) => {
 //login page > render login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-  res.redirect('/');
-  return
+    res.redirect('/');
+    return
   }
   res.render('login');
 });
 
 //sign up page > render signup > contain authentication routes
-router.get('/signup', (req, res) => {
+router.get('/signup', (req, res, next) => {
+  if(req.session.loggedIn) {
+    res.redirect('/');
+    return;
+}
   res.render('signup');
 });
 
