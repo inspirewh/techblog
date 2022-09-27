@@ -3,7 +3,7 @@ const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-// route homepage - get all blogs to homepage
+// route homepage - gets all blogs from the database and renders them to the homepage
 router.get('/', async (req, res) => {
     const bloglistData = await Blog.findAll(
       {include: [{
@@ -23,8 +23,6 @@ router.get('/', async (req, res) => {
 
 
 
-
-      
 //login page > render login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -59,7 +57,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
   });
 
 // route to create a new post
-router.get('/createblog', (req, res, next) => {
+router.get('/dashboard/new', (req, res) => {
   res.render('create-blog')
 })
 
