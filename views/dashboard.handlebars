@@ -1,5 +1,3 @@
-{{#if posts.length}}
-
 <section>
   <h2>Your Blogs</h2>
     {{#each userbloglist as |blog|}} {{!-- user created blogs--}}
@@ -7,9 +5,8 @@
     {{/each}}
 
 </section>
-{{/if}}
 
-<button type="submit" class="btn" ><a style="color:black" href="/dashboard/new">+ New Post</a></button>
+<button type="submit" class="btn" ><a style="color:black" id="create-blog-form" href="/dashboard/new">+ New Post</a></button>
 
 <script src="/js/create-blog.js"></script>
 

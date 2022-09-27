@@ -33,7 +33,7 @@ router.get('/login', (req, res) => {
 });
 
 //sign up page > render signup > contain authentication routes
-router.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res) => {
   if(req.session.loggedIn) {
     res.redirect('/');
     return;
