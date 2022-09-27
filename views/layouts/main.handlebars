@@ -21,11 +21,11 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/dashboard">Dashboard</a>
-        {{#if loggedIn}}
-        <li class="nav-link"><a class="link" href="/" id="logout">Logout </a></li>
+        {{#if session.loggedIn}}
+        <li class="nav-link"><a class="link" href="/" id="logout-btn">Logout </a></li>
         {{else}}
         <a class="nav-link" href="/login">Log In</a>
-        <a class="nav-link" href="/register">Register</a>
+        <a class="nav-link" href="/signup">Register</a>
         {{/if}}
       </div>
     </div>

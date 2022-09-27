@@ -6,9 +6,16 @@
         <label class="form-label" for="content">Content</label>
         <input name="content" type="text" value="{{blog.content}}" class="form-input" id="body" />
         <button type="submit" id="edit-btn" data-id="{{blog.id}}"class="btn">Update Blog</button>
-        <button type="submit" data-id="{{blog.id}}" id="delete-btn" class="delete-post-btn btn">Delete Post</button>
+        <button type="click" data-id="{{blog.id}}" id="delete-btn" class="delete-post-btn btn">Delete Post</button>
     </form>
 </div>
 
+{{#if session.loggedIn}}
+
+<script src="/js/log-out.js"></script>
+
+{{/if}}
+
 
 <script src="/js/update-blog.js"></script>
+<script src="/js/delete-blog.js"></script>

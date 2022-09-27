@@ -48,6 +48,7 @@ router.delete("/delete/:id", withAuth, async (req, res)=> {
           })
           return;
       } 
+      res.json(destroyData)
 
   } catch (error) {
       console.log(error)

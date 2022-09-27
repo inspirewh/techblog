@@ -4,3 +4,10 @@
         {{#each blogList as |blog|}}
         {{> blog-list}}
         {{/each}}
+
+{{#if session.loggedIn}}
+
+<script src="/js/log-out.js"></script>
+
+
+{{/if}}

@@ -11,7 +11,7 @@
   {{#if blog.comments}}
   <strong class="mb-2">Comments</strong>
 
-  {{#each commentList as |comment|}}
+  {{#each blog.comments as |comment|}}
   {{> comment-data}}
   {{/each}}
 
@@ -20,16 +20,30 @@
   {{/if}}
   </div>
 
+{{#if session.loggedIn}}
    <div class="card">
-    <h3 class="card-header"></h3>
+    <h3 class="card-header">Add a comment</h3>
     <form class="card-body comment-form" id="comment-form">
 
         <label class="form-label">Comment</label>
         <input id="comment-body" name="comment-body" class="form-input" />
 
-        <button type="submit" class="btn" id="commentBtn">Submit</button>
+        <button type="submit" id="submit-btn" data-id="{{post.id}}" class="btn" >Submit</button>
     </form>
 </div>
 </section>
 
-  <script src="/js/comment.js"></script>
+{{else}}
+<p>Login to leave a comment</p>
+{{/if}}
+
+{{#if session.loggedIn}}
+
+<script src="/js/log-out.js"></script>
+
+
+{{/if}}
+
+
+<script src="/js/create-comment.js"></script>
+

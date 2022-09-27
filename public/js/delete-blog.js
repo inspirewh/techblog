@@ -14,4 +14,4 @@ async function deleteHandler(event) {
     }
 }
 
-document.querySelector('#delete-btn').addEventListener('submit', deleteHandler);
+document.querySelector('#delete-btn').addEventListener('click', deleteHandler);

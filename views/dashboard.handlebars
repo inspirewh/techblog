@@ -8,6 +8,12 @@
 
 <button type="submit" class="btn" ><a style="color:black" id="create-blog-form" href="/dashboard/new">+ New Post</a></button>
 
+{{#if session.loggedIn}}
+
+<script src="/js/log-out.js"></script>
+
+{{/if}}
+
 <script src="/js/create-blog.js"></script>
 
 
