@@ -62,4 +62,17 @@ router.get('/dashboard/new', (req, res) => {
 })
 
 
+// Renders the edit page,
+router.get('/edit/:id', withAuth, async (req, res, next)=> {
+  try {
+      const blog = await Blog.findByPk(req.params.id) 
+      console.log(blog)
+      res.render('edit-blog', { blog })
+      
+  } catch (error) {
+      console.log(error)
+  }
+  
+}) 
+
 module.exports = router

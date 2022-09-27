@@ -7,7 +7,7 @@ async function editFormHandler(event) {
     const title = document.querySelector('#title').value.trim() 
     const content = document.querySelector('#body').value.trim()
 
-    const response = await fetch(`/update/${postId}`, {
+    const response = await fetch(`/update/${blog.id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title,
@@ -25,4 +25,4 @@ async function editFormHandler(event) {
     }
 }
 
-document.querySelector('#edit-post-form').addEventListener('submit', editFormHandler);
+document.querySelector('#edit-blog-form').addEventListener('submit', editFormHandler);

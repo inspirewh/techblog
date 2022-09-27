@@ -16,7 +16,7 @@ router.post('/blog', withAuth, async(req,res) =>{
 })
 
 // Put route to update/edit an existing blog
-router.put('/update/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Blog.update(
       {
           title: req.body.title,
