@@ -16,8 +16,8 @@ router.post('/blog', withAuth, async(req,res) =>{
 })
 
 // Put route to update/edit an existing blog
-router.put('/:id', withAuth, (req, res) => {
-  Blog.update(
+router.put('/update/:id', withAuth, async(req, res) => {
+  const updateBlog = await Blog.update(
       {
           title: req.body.title,
           content: req.body.content
@@ -28,6 +28,32 @@ router.put('/:id', withAuth, (req, res) => {
           }
       }        
   )
+  res.json(updateBlog);
+})
+
+// Delete route to remove an existing post
+router.delete("/delete/:id", withAuth, async (req, res)=> {
+  try {
+      const destroyData = await Blog.destroy({
+          where: {
+              id: req.params.id
+          }
+      })
+      
+      console.log(destroyData)
+
+      if(!destroyData) {
+          res.status(404).json({
+              message: "No post found with this id"
+          })
+          return;
+      } 
+
+  } catch (error) {
+      console.log(error)
+      res.status(500).json(error)
+  }
+
 })
 
 

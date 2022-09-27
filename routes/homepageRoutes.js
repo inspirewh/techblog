@@ -65,7 +65,8 @@ router.get('/dashboard/new', (req, res) => {
 // Renders the edit page,
 router.get('/edit/:id', withAuth, async (req, res, next)=> {
   try {
-      const blog = await Blog.findByPk(req.params.id) 
+      const blogData = await Blog.findByPk(req.params.id) 
+      const blog = blogData.get({ plain: true });
       console.log(blog)
       res.render('edit-blog', { blog })
       

@@ -1,13 +1,13 @@
 async function editFormHandler(event) {
     event.preventDefault();
 
-    const postId = document.getElementById('edit-btn').getAttribute('data-id')
+    const blogId = document.getElementById('edit-btn').getAttribute('data-id')
 
 
     const title = document.querySelector('#title').value.trim() 
     const content = document.querySelector('#body').value.trim()
 
-    const response = await fetch(`/update/${blog.id}`, {
+    const response = await fetch(`/update/${blogId}`, {
         method: 'PUT',
         body: JSON.stringify({
             title,
@@ -19,7 +19,7 @@ async function editFormHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     }
