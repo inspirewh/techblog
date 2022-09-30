@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { Comment } = require('../../models');
+const { Comment } = require('../../models/index-model');
 
 
 // route to get all comments on post page 
