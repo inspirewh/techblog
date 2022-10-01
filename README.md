@@ -22,19 +22,18 @@ The TechBlog live URL:
 
 ## Installation
 * 'npm init' ,
-* Install the below packages.
-    - bcrypt 
-    - connect-session-sequelize
-    - dotenv
+* Install the following packages:
     - express
     - express-handlebars
     - express-session
     - mysql2
     - sequelize
+    - bcrypt 
+    - connect-session-sequelize
+    - dotenv
 
 ## Usage
  This application will allow users to signup to the TechBlog site.Once the user Signedup successfully,they can view all the post and comment on the other user's post.
-
  The user can create a new post and update/delete their own post.
 
 ## License
