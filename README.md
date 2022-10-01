@@ -15,12 +15,12 @@
 ## Description
 This is a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
 
-## Application Live URL
+## Deployed Application URL
 The TechBlog live URL:
 
 [The TechBlog Live URL here](https://gentle-caverns-37156.herokuapp.com/)
 
-## Installation
+## Installation Instructions
 * 'npm init' ,
 * Install the following packages:
     - express
