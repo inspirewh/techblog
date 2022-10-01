@@ -3,8 +3,8 @@
 
 ## Table of Contents
 * [Description](#description)
-* [Application Live URL](#application-live-url)
-* [Installation](#installation)
+* [Application Live URL](#Deployed-Application-URL)
+* [Installation](#installation-instructions)
 * [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributing)
